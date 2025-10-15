@@ -62,10 +62,11 @@
             <Spinner
                 android:id="@+id/spThumbnail"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_weight="1"
                 android:background="@android:color/white"
-                android:padding="8dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
                 android:spinnerMode="dialog"/>
         </LinearLayout>
 

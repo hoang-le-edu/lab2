@@ -35,10 +35,10 @@ public class Bai7Activity extends AppCompatActivity {
 
         // Tạo ArrayList và thêm dữ liệu mẫu
         employees = new ArrayList<>();
-        employees.add(new Employee2("Nhan", "", false));
-        employees.add(new Employee2("Van", "", true));
-        employees.add(new Employee2("An", "", false));
-        employees.add(new Employee2("Binh", "", false));
+        employees.add(new Employee2("Nhan", "Nhan", false));
+        employees.add(new Employee2("Van", "Van", true));
+        employees.add(new Employee2("An", "An", false));
+        employees.add(new Employee2("Binh", "Binh", false));
 
         // Tạo adapter và set cho RecyclerView
         adapter = new EmployeeRecyclerAdapter(employees);

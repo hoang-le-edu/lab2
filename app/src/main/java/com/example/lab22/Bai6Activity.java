@@ -30,14 +30,14 @@ public class Bai6Activity extends AppCompatActivity {
 
     private void createHeroList() {
         mHeros = new ArrayList<>();
-        mHeros.add(new Hero("Thor", R.drawable.image_thor));
-        mHeros.add(new Hero("IronMan", R.drawable.image_ironman));
-        mHeros.add(new Hero("Hulk", R.drawable.image_hulk));
-        mHeros.add(new Hero("SpiderMan", R.drawable.image_spiderman));
-        mHeros.add(new Hero("IronMan", R.drawable.image_ironman));
-        mHeros.add(new Hero("Hulk", R.drawable.image_hulk));
-        mHeros.add(new Hero("Thor", R.drawable.image_thor));
-        mHeros.add(new Hero("IronMan", R.drawable.image_ironman));
+        mHeros.add(new Hero("Thor", R.drawable.thor));
+        mHeros.add(new Hero("IronMan", R.drawable.ironman));
+        mHeros.add(new Hero("Hulk", R.drawable.hulk));
+        mHeros.add(new Hero("SpiderMan", R.drawable.spiderman));
+        mHeros.add(new Hero("IronMan", R.drawable.ironman));
+        mHeros.add(new Hero("Hulk", R.drawable.hulk));
+        mHeros.add(new Hero("Thor", R.drawable.thor));
+        mHeros.add(new Hero("IronMan", R.drawable.ironman));
     }
 }
 

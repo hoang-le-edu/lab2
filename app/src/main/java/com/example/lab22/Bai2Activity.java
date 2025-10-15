@@ -1,5 +1,6 @@
 package com.example.lab22;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,6 +23,7 @@ public class Bai2Activity extends AppCompatActivity {
     ListView lvNames;
     ArrayList<String> names;
     ArrayAdapter<String> adapter;
+    View previousSelectedView = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +68,18 @@ public class Bai2Activity extends AppCompatActivity {
         lvNames.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Reset màu của item trước đó về trắng
+                if (previousSelectedView != null) {
+                    previousSelectedView.setBackgroundColor(Color.TRANSPARENT);
+                }
+
+                // Set màu xanh lá cho item được chọn
+                view.setBackgroundColor(Color.parseColor("#00FF00"));
+                
+                // Lưu view hiện tại để reset sau
+                previousSelectedView = view;
+
+                // Hiển thị thông tin
                 String selectedItem = names.get(position);
                 tvSelection.setText("Vị trí: " + (position + 1) + " - Giá trị: " + selectedItem);
             }
@@ -78,6 +92,10 @@ public class Bai2Activity extends AppCompatActivity {
                 String removedItem = names.get(position);
                 names.remove(position);
                 adapter.notifyDataSetChanged();
+                
+                // Reset previousSelectedView vì item có thể đã bị xóa
+                previousSelectedView = null;
+                
                 Toast.makeText(Bai2Activity.this, "Đã xóa: " + removedItem, Toast.LENGTH_SHORT).show();
                 return true;
             }

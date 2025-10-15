@@ -22,7 +22,7 @@ public class ThumbnailAdapter extends ArrayAdapter<Thumbnail> {
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
         // Sử dụng view item_thumbnail.xml để hiển thị nội dung thumbnail trong dropdown (dạng dialog)
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_thumbnail, null, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_thumbnail, parent, false);
         }
 
         Thumbnail thumbnail = getItem(position);
@@ -42,7 +42,7 @@ public class ThumbnailAdapter extends ArrayAdapter<Thumbnail> {
     public View getView(int position, View convertView, ViewGroup parent) {
         // Sử dụng view item_selected_thumbnail.xml để hiển thị nội dung thumbnail được chọn lên spinner
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_selected_thumbnail, null, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_selected_thumbnail, parent, false);
         }
 
         Thumbnail thumbnail = getItem(position);

@@ -5,11 +5,17 @@
 **Logic hoạt động:**
 1. Tạo mảng String `names[]` chứa dữ liệu: `{"Tèo", "Tý", "Bìn", "Bo"}`
 2. Sử dụng `ArrayAdapter` để gắn dữ liệu vào ListView
-3. Khi click vào item, `onItemClickListener` lấy vị trí và giá trị, hiển thị lên TextView
+3. TextView "Position - Value" có background màu **blue** (#2196F3)
+4. Khi click vào item:
+   - Reset màu của item trước về transparent
+   - Đổi màu item được chọn thành **green** (#00FF00)
+   - Lưu reference của view để reset sau
+   - Hiển thị thông tin position + value lên TextView
 
 **Luồng:**
 ```
-Khởi tạo mảng → ArrayAdapter → Gán adapter cho ListView → Click item → Hiển thị thông tin
+Khởi tạo mảng → ArrayAdapter → Gán adapter cho ListView 
+→ Click item → Reset màu cũ → Set màu green cho item mới → Hiển thị thông tin
 ```
 
 ---
@@ -17,17 +23,24 @@ Khởi tạo mảng → ArrayAdapter → Gán adapter cho ListView → Click ite
 ## Bài 2: ArrayList và ListView với thêm/xóa
 
 **Logic hoạt động:**
-1. Tạo `ArrayList<String>` để lưu danh sách tên (có thể thêm/xóa động)
-2. Sử dụng `ArrayAdapter` kết nối ArrayList với ListView
-3. Button "Nhập": lấy text từ EditText → thêm vào ArrayList → `notifyDataSetChanged()` để cập nhật UI
-4. Click item: hiển thị thông tin
-5. Long click item: xóa item khỏi ArrayList → cập nhật UI
+1. TextView "Nhập tên:" nằm bên ngoài EditText
+2. Button có độ rộng bằng EditText (match_parent)
+3. Tạo `ArrayList<String>` để lưu danh sách tên (có thể thêm/xóa động)
+4. Sử dụng `ArrayAdapter` kết nối ArrayList với ListView
+5. TextView "Position - Value" có background màu **blue** (#2196F3)
+6. Button "Nhập": lấy text từ EditText → thêm vào ArrayList → `notifyDataSetChanged()` để cập nhật UI
+7. Click item:
+   - Reset màu item cũ về transparent
+   - Đổi màu item được chọn thành **green** (#00FF00)
+   - Hiển thị thông tin
+8. Long click item: xóa item khỏi ArrayList → reset previousSelectedView → cập nhật UI
 
 **Luồng:**
 ```
 ArrayList → ArrayAdapter → ListView
 Nhập text → add() → notifyDataSetChanged() → UI cập nhật
-Long click → remove() → notifyDataSetChanged() → UI cập nhật
+Click → Reset màu cũ → Set màu green → Hiển thị thông tin
+Long click → remove() → reset view → notifyDataSetChanged() → UI cập nhật
 ```
 
 ---
@@ -56,18 +69,19 @@ Nhập id, name → Chọn RadioButton (FullTime/PartTime)
 **Logic hoạt động:**
 1. Tạo `Employee2` class (id, fullName, isManager)
 2. Tạo layout `item_employee.xml` cho mỗi dòng (TextView, ImageView)
-3. Tạo `EmployeeAdapter extends ArrayAdapter<Employee2>`
-4. Override `getView()`: 
+3. Icon manager (`ic_manager.xml`): Vector drawable với đầu, thân (vest đen), cổ áo trắng, cà vạt đen
+4. Tạo `EmployeeAdapter extends ArrayAdapter<Employee2>`
+5. Override `getView()`: 
    - Inflate layout nếu convertView null (View recycling)
-   - Bind dữ liệu: nếu isManager → hiện icon, không thì hiện "Staff"
-   - Đổi màu nền theo vị trí chẵn/lẻ
-5. User nhập → tạo Employee2 → add vào list → notifyDataSetChanged()
+   - Bind dữ liệu: nếu isManager → hiện icon manager, không thì hiện "Staff"
+   - Đổi màu nền theo vị trí chẵn/lẻ (white/light_blue)
+6. User nhập → tạo Employee2 → add vào list → notifyDataSetChanged()
 
 **Luồng:**
 ```
 ArrayList<Employee2> → EmployeeAdapter
 getView() gọi cho mỗi item:
-  - Kiểm tra isManager → show/hide icon/text
+  - Kiểm tra isManager → show icon manager / show "Staff"
   - Đổi màu nền theo position % 2
   - Return view đã customize
 ```
@@ -80,24 +94,29 @@ getView() gọi cho mỗi item:
 
 ### Spinner (dropdown):
 1. Tạo `Thumbnail` enum chứa 4 loại (name + drawable resource)
-2. Tạo `ThumbnailAdapter` với 2 phương thức:
+2. Ảnh thumbnails: Sử dụng ảnh thực từ `food1.webp`, `food2.webp`, `food3.webp`, `food4.webp`
+3. Tạo `ThumbnailAdapter` với 2 phương thức:
    - `getView()`: hiển thị item đã chọn (chỉ text)
-   - `getDropDownView()`: hiển thị dropdown (hình + text)
-3. User chọn thumbnail từ spinner (dialog mode)
+   - `getDropDownView()`: hiển thị dropdown dạng dialog (hình + text)
+4. Spinner mode = "dialog" → hiển thị popup thay vì dropdown
+5. User chọn thumbnail → chỉ tên hiển thị trên spinner
 
 ### GridView:
 1. Tạo `Dish` class (name, thumbnail, isPromotion)
 2. Tạo `DishAdapter extends ArrayAdapter<Dish>`
 3. Layout `item_dish.xml` có: ImageView (thumbnail), TextView (tên - marquee), ImageView (star)
-4. User nhập name + chọn thumbnail + checkbox promotion → add Dish → GridView hiển thị 2 cột
+4. User nhập name + chọn thumbnail từ spinner + checkbox promotion → Toast "Added successfully!" → add Dish → GridView hiển thị 2 cột
 5. TextView tên món: `android:ellipsize="marquee"` + `setSelected(true)` → text chạy nếu dài
+6. DishAdapter set thumbnail từ enum → hiển thị drawable tương ứng
 
 **Luồng:**
 ```
-Nhập name → Chọn thumbnail (Spinner) → Checkbox promotion
-→ new Dish() → add vào ArrayList
+Nhập name → Click Spinner → Dialog hiển thị 4 thumbnail (hình + tên)
+→ Chọn thumbnail → Tên hiển thị trên spinner
+→ Checkbox promotion → Click "ADD A NEW DISH"
+→ Validate input → Toast thông báo → new Dish() → add vào ArrayList
 → DishAdapter render GridView:
-  - Set thumbnail image
+  - Set thumbnail image từ drawable
   - Set text (marquee nếu dài)
   - Show/hide star nếu promotion
 ```
@@ -108,8 +127,9 @@ Nhập name → Chọn thumbnail (Spinner) → Checkbox promotion
 
 **Logic hoạt động:**
 1. Tạo `Hero` class (name, image)
-2. Tạo layout `item_hero.xml` (ImageView + TextView overlay)
-3. Tạo `HeroAdapter extends RecyclerView.Adapter`:
+2. Ảnh heroes: Sử dụng ảnh thực từ `thor.webp`, `ironman.webp`, `hulk.webp`, `spiderman.webp`
+3. Tạo layout `item_hero.xml` (ImageView + TextView overlay)
+4. Tạo `HeroAdapter extends RecyclerView.Adapter`:
    - Tạo inner class `ViewHolder extends RecyclerView.ViewHolder` (giữ references đến views)
    - `onCreateViewHolder()`: inflate layout và tạo ViewHolder
    - `onBindViewHolder()`: bind dữ liệu vào ViewHolder tại position

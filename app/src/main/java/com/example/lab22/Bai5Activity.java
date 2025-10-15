@@ -42,6 +42,7 @@ public class Bai5Activity extends AppCompatActivity {
         // Khởi tạo danh sách thumbnails cho spinner
         thumbnails = new ArrayList<>(Arrays.asList(Thumbnail.values()));
         thumbnailAdapter = new ThumbnailAdapter(this, R.layout.item_selected_thumbnail, thumbnails);
+        thumbnailAdapter.setDropDownViewResource(R.layout.item_thumbnail);
         spThumbnail.setAdapter(thumbnailAdapter);
 
         // Khởi tạo danh sách món ăn mẫu

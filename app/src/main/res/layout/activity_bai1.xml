@@ -9,9 +9,9 @@
         android:id="@+id/tvSelection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#00FF00"
+        android:background="#2196F3"
         android:text="Dùng để hiển thị vị trí và giá trị của phần tử được chọn trong ListView"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:padding="16dp"
         android:textSize="16sp"/>
 

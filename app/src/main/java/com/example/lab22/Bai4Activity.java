@@ -34,10 +34,10 @@ public class Bai4Activity extends AppCompatActivity {
 
         // Tạo ArrayList và thêm dữ liệu mẫu
         employees = new ArrayList<>();
-        employees.add(new Employee2("Nhan", "", false));
-        employees.add(new Employee2("Van", "", true));
-        employees.add(new Employee2("An", "", false));
-        employees.add(new Employee2("Binh", "", false));
+        employees.add(new Employee2("1", "Nhan", false));
+        employees.add(new Employee2("2", "Van", true));
+        employees.add(new Employee2("3", "An", false));
+        employees.add(new Employee2("4", "Binh", false));
 
         // Tạo custom adapter
         adapter = new EmployeeAdapter(this, R.layout.item_employee, employees);
