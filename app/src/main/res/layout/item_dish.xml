@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/ivThumbnail"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:id="@+id/tvDishName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dish Name"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:scrollHorizontally="true"
+        android:layout_marginTop="8dp"/>
+
+    <ImageView
+        android:id="@+id/ivStar"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@android:drawable/btn_star_big_on"
+        android:visibility="gone"
+        android:layout_marginTop="4dp"/>
+
+</LinearLayout>
+

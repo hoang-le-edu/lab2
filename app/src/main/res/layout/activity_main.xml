@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LAB 02 - LISTVIEW và RECYCLERVIEW"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="32dp"/>
+
+    <Button
+        android:id="@+id/btnBai1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bài 1: ListView với mảng dữ liệu đơn giản"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnBai2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bài 2: Sử dụng ArrayList và ListView"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnBai3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bài 3: ListView với Object (Employee)"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnBai4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bài 4: CustomAdapter cho ListView"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnBai5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bài 5: GridView và Spinner"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnBai6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bài 6: RecyclerView với Hero"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnBai7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bài 7: RecyclerView với Employee"
+        android:layout_marginBottom="16dp"/>
+
+</LinearLayout>

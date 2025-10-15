@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:id="@+id/llParent">
+
+    <TextView
+        android:id="@+id/item_employee_tv_fullname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:singleLine="true"
+        android:text="Full Name"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/item_employee_tv_position"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:singleLine="true"
+        android:text="Position"
+        android:textSize="16sp"/>
+
+    <ImageView
+        android:id="@+id/item_employee_iv_manager"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_manager"
+        android:scaleType="centerCrop"
+        android:visibility="gone"/>
+
+</LinearLayout>
+
